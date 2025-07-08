@@ -10,7 +10,8 @@ def runTerminal():
     builtin = {
         #command : function
         "status" : lambda argc, argv : checkSystemStatus(argc, argv),
-        "help" : lambda argc, argv: help(argc, argv)
+        "help" : lambda argc, argv: help(argc, argv),
+        "diagram" : lambda argc, argv: diagram(argc, argv),
     }
 
     keepGoing = True
@@ -74,6 +75,27 @@ def help(argc, argv):
             print(command)
     elif (argc > 1 and argv[1] in helpDict):
         print(helpDict[argv[1]])
+    
+    return 0
+
+def diagram(argc, argv):
+    print("""   *   ** ╓──────────────────┐
+ #      # ╣      Main        ├──────────────────────────────────┐           ______
+          ╣     Engine       │	          Mess Hall             │          /Turret\\=====+
+   #     *╣                  │	                                │         (\\      /)
+  *   #   ╣                  ├─────┬─┬────────────────────────┬─┴─────────────────────────╮
+*         ╙──────────┬───────┘     ┆ ┆   Barracks             ┆                            ╲
+       ╓─────────────┴┐            ┆ ┆                        ┆   Cargo &                   ╲
+     # ╣  Shield      │	Engineering┆ ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┤   Docking Station            ╲
+ *     ╣  Engine      │            ┆ ┆     Rec Room           ┆                               ╲
+  *  # ╣              ├┄┄┄┄┄┄┄┄┄┄┄┄┴┄┴┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┬┄┄┄┄┄┄┄┄┴┄┄┄┄┄┄┄┄┬┄┄┄┄┄┄┄┄┄┄┄┄┬┄┄┄┄┄┄┄┄┄┄╲            
+       ╣              │	 Officer Quaters and Offices ┆    Medical &    ┆  Guest     ┆ Weapons   ╲
+    #* ╙────────────┬─┘                              ┆    Labs         ┆  Quarters  ┆ Cargo      ╲
+                    └───────────────┬────────────────┴──┬──────────────┴────────────┴────────────╯
+                                    │                   │
+                                    │      Cockpit      │
+                                    │                   │
+                                    └───────────────────┘""")
     
     return 0
 
